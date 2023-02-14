@@ -1,0 +1,11 @@
+---
+applications:
+  - name: isabelj/nrforcloudgov
+    instances: 1
+    no-route: true
+    health-check-type: process
+    docker:
+      image: isabelj/nrforcloudgov
+      username: isabelj
+    services:
+    - name: cupsTest
