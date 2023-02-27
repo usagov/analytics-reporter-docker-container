@@ -2,7 +2,7 @@ This repository creates a Docker container which runs the 18f [analytics-reporte
 
 The base image is the [node alpine image](https://hub.docker.com/_/node). It copies and runs testscript.sh. The script installs the [analytics-reporter](https://github.com/18F/analytics-reporter) found in /analytics-reporter. To pull the data variables ANALYTICS_REPORT_IDS, ANALYTICS_REPORT_EMAIL, and ANALYTICS_KEY needed. To write to an S3 bucket the AWS_REGION,AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET and AWS_BUCKET_PATH environment variables are needed. These are stored in a user provided service instance {s3user-provided-service} and are accessible through [VCAP_SERVICES](https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html).  The script requires bash and [jq](https://stedolan.github.io/jq/manual/) to parse the VCAP_SERVICES and export the variables.
 
-The analytics reporter is called every 900 seconds (equal to 15 minutes). It outputs 23 json files to https://s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}/{AWS_BUCKET_PATH}/{json-file}.
+The analytics reporter is called every 900 seconds (equal to 15 minutes). It outputs 33 json files to https://s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}/{AWS_BUCKET_PATH}/{json-file}.
 
 ### User Provided Services (UPS):
   Cloud front documentation states:
