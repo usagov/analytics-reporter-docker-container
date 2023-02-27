@@ -43,8 +43,9 @@ The output of the analytics reporter is stored on a S3 bucket in cloud.gov. The 
 | --- | --- | --- | --- |
 | docker-repo | cf-app-name | ANALYTICS_REPORT_EMAIL | AWS_ACCESS_KEY_ID |
 | image | cf-user | ANALYTICS_KEY| AWS_SECRET_ACCESS_KEY |
-| json-file | s3user-provided-service | AWS_REGION | AWS_BUCKET |
+| json-file | s3user-provided-service |ANALYTICS_REPORT_IDS  | AWS_BUCKET |
 | --- | --- | --- | AWS_BUCKET_PATH |
+| --- | --- | --- | AWS_REGION |
 
 
 ## Create docker container for cloud.gov to write to S3
