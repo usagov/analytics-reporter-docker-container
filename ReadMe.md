@@ -24,21 +24,19 @@ Subsequent/Updates:
 
 ### S3 on Cloud.Gov
 The output of the analytics reporter is stored on a S3 bucket in cloud.gov. The AWS_REGION,AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET and AWS_BUCKET_PATH are also stored in VCAP_SERVICES. The analytics reporter already comes with a pre-configuered lightweight S3 publishing tool which just requires the above variables. The json files are stored at https://s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}/{AWS_BUCKET_PATH}/{json-file} where the {json-file} is one of the 23 following options:
-|       |        |
-| :----:       |    :----:   |
-| browsers.json | top-domains-30-days.json |
-| device_model.json  | top-domains-7-days.json |
-| devices.json | top-exit-pages-30-days.json |
-| ie.json  |  top-landing-pages-30-days.json |
-| language.json |  top-pages-30-days.json |
-| last-48-hours.json  | top-pages-7-days.json |
-| os-browsers.json |  top-pages-realtime.json |
-| os.json  | top-traffic-sources-30-days.json |
-| realtime.json | users.json |
-| screen-size.json  | windows-browsers.json |
-| today.json | windows-ie.json    |
-|  | windows.json |
-
+|       |        |        |
+| :----:       |    :----:   |    :----:   |
+| all-domains-30-days | screen-size | top-external-links-7-days | 
+| all-pages-realtime | today | top-external-links-yesterday | 
+| browsers | top-cities-90-days | top-landing-pages-30-days | 
+| device_model | top-cities-realtime | top-pages-30-days | 
+| devices | top-countries-90-days | top-pages-7-days | 
+| ie | top-countries-realtime | top-pages-realtime | 
+| language | top-domains-30-days | top-traffic-sources-30-days | 
+| last-48-hours | top-domains-7-days | traffic-sources-30-days | 
+| os-browsers | top-downloads-yesterday | users | windows-browsers | 
+| os | top-exit-pages-30-days | windows-ie | 
+| realtime | top-external-links-30-days | windows | 
 
 ### Variables, Keys & Credentials you will need
 | Docker | Cloud.gov | Google Analytics | AWS |
