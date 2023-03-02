@@ -31,6 +31,7 @@ export ANALYTICS_REPORT_EMAIL=$ANALYTICS_REPORT_EMAIL
 
 while true;
 do
+  echo running analytics
   ./bin/analytics --publish;
   # ping every 900- 15 min;
   sleep 900;
