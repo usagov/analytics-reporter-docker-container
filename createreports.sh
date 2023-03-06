@@ -1,5 +1,5 @@
 #!/bin/bash
-echo starting container testscript.sh
+echo starting container createreports.sh
 cd analytics-reporter
 
 npm install -g analytics-reporter
@@ -31,11 +31,10 @@ export ANALYTICS_REPORT_EMAIL=$ANALYTICS_REPORT_EMAIL
 
 while true;
 do
-  echo running analytics
+  echo running analytics reporter
   ./bin/analytics --publish;
   # ping every 900- 15 min;
   sleep 900;
 done;
 
-
-echo ending container testscript.sh
+echo ending container createreports.sh
