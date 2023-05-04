@@ -26,17 +26,17 @@ Subsequent/Updates:
 The output of the analytics reporter is stored on a S3 bucket in cloud.gov. The AWS_REGION,AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET and AWS_BUCKET_PATH are also stored in VCAP_SERVICES. The analytics reporter already comes with a pre-configuered lightweight S3 publishing tool which just requires the above variables. The json files are stored at https://s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}/{AWS_BUCKET_PATH}/{json-file} where the {json-file} is one of the 23 following options:
 |       |        |        |
 | :----:       |    :----:   |    :----:   |
-| all-domains-30-days | screen-size | top-external-links-7-days | 
-| all-pages-realtime | today | top-external-links-yesterday | 
-| browsers | top-cities-90-days | top-landing-pages-30-days | 
-| device_model | top-cities-realtime | top-pages-30-days | 
-| devices | top-countries-90-days | top-pages-7-days | 
-| ie | top-countries-realtime | top-pages-realtime | 
-| language | top-domains-30-days | top-traffic-sources-30-days | 
-| last-48-hours | top-domains-7-days | traffic-sources-30-days | 
-| os-browsers | top-downloads-yesterday | users | windows-browsers | 
-| os | top-exit-pages-30-days | windows-ie | 
-| realtime | top-external-links-30-days | windows | 
+| all-domains-30-days | screen-size | top-external-links-7-days |
+| all-pages-realtime | today | top-external-links-yesterday |
+| browsers | top-cities-90-days | top-landing-pages-30-days |
+| device_model | top-cities-realtime | top-pages-30-days |
+| devices | top-countries-90-days | top-pages-7-days |
+| ie | top-countries-realtime | top-pages-realtime |
+| language | top-domains-30-days | top-traffic-sources-30-days |
+| last-48-hours | top-domains-7-days | traffic-sources-30-days |
+| os-browsers | top-downloads-yesterday | users | windows-browsers |
+| os | top-exit-pages-30-days | windows-ie |
+| realtime | top-external-links-30-days | windows |
 
 ### Variables, Keys & Credentials you will need
 | Docker | Cloud.gov | Google Analytics | AWS |
@@ -69,11 +69,23 @@ The output of the analytics reporter is stored on a S3 bucket in cloud.gov. The 
     - cf service-key {s3user-provided-service} {cf-user}
 7. Create user provided service
     - create & save environment variables (Google Analytics and AWS Keys) in {vcap_keys}.json
-    - cf cups cupsTest -p [path to : {vcap_keys}.json]
-    - cf bind-service {cf-app-name} cupsTest
+    - cf cups analyticsReporterServices -p [path to : {vcap_keys}.json]
+    - cf bind-service {cf-app-name} analyticsReporterServices
     - cf restage {cf-app-name}
-10. Repeat steps 3, 4 & 5
-11. Access via:
+10. Edit manifest.yml
+    - The manifest.yml files now needs to point to the s3 bucket you just created. Add:
+      - services:
+        -name: analyticsReporterServices
+11. docker buildx build -t {docker-repo}/{image}  --platform linux/amd64 .
+12. docker push {docker-repo}/{image}
+13. Push to cloud.gov:
+    - from public repo:
+      - cf push {image} --docker-image {docker-repo}/{image}
+    - from private repo:
+      - CF_DOCKER_PASSWORD={docker-password} cf push {image} --docker-image {docker-repo}/{image}   --docker-username {docker-repo}
+    - if using manifest.yml:
+      - CF_DOCKER_PASSWORD={docker-password} cf push {cf-app-name}
+12. Access via:
     - https://s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}/{AWS_BUCKET_PATH}/{json-file}
 
 
