@@ -31,7 +31,7 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:deviceCategory"],
+        "dimensions": ["ga:date" ,"ga:deviceCategory"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
@@ -48,7 +48,7 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:screenResolution"],
+        "dimensions": ["ga:date" ,"ga:screenResolution"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
@@ -81,7 +81,7 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:language"],
+        "dimensions": ["ga:date" ,"ga:language"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
@@ -94,12 +94,13 @@
       }
     },
 
+
     {
       "name": "device_model",
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:mobileDeviceModel"],
+        "dimensions": ["ga:date" ,"ga:mobileDeviceModel"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
@@ -117,7 +118,7 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:operatingSystem"],
+        "dimensions": ["ga:date" ,"ga:operatingSystem"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
@@ -134,11 +135,14 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:operatingSystemVersion"],
+        "dimensions": ["ga:date" ,"ga:operatingSystemVersion"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
-        "filters": ["ga:operatingSystem==Windows", "ga:sessions>10"],
+        "filters": [
+          "ga:operatingSystem==Windows",
+          "ga:sessions>10"
+        ],
         "sort": "ga:date"
       },
       "meta": {
@@ -151,7 +155,7 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:browser"],
+        "dimensions": ["ga:date" ,"ga:browser"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
@@ -168,12 +172,15 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:browserVersion"],
+        "dimensions": ["ga:date","ga:browserVersion"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
         "sort": "ga:date,-ga:sessions",
-        "filters": ["ga:browser==Internet Explorer", "ga:sessions>10"]
+        "filters": [
+          "ga:browser==Internet Explorer",
+          "ga:sessions>10"
+        ]
       },
       "meta": {
         "name": "Internet Explorer",
@@ -185,7 +192,7 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:browser", "ga:operatingSystem"],
+        "dimensions": ["ga:date" ,"ga:browser", "ga:operatingSystem"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
@@ -202,12 +209,15 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": ["ga:date", "ga:browser", "ga:operatingSystemVersion"],
+        "dimensions": ["ga:date" ,"ga:browser", "ga:operatingSystemVersion"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
         "sort": "ga:date,-ga:sessions",
-        "filters": ["ga:sessions>10", "ga:operatingSystem==Windows"]
+        "filters": [
+          "ga:sessions>10",
+          "ga:operatingSystem==Windows"
+        ]
       },
       "meta": {
         "name": "Windows-browser combinations",
@@ -219,11 +229,7 @@
       "frequency": "daily",
       "slim": true,
       "query": {
-        "dimensions": [
-          "ga:date",
-          "ga:browserVersion",
-          "ga:operatingSystemVersion"
-        ],
+        "dimensions": ["ga:date","ga:browserVersion", "ga:operatingSystemVersion"],
         "metrics": ["ga:sessions"],
         "start-date": "90daysAgo",
         "end-date": "yesterday",
@@ -260,14 +266,7 @@
       "frequency": "daily",
       "query": {
         "dimensions": ["ga:source", "ga:hasSocialSourceReferral"],
-        "metrics": [
-          "ga:sessions",
-          "ga:pageviews",
-          "ga:users",
-          "ga:pageviewsPerSession",
-          "ga:avgSessionDuration",
-          "ga:exits"
-        ],
+        "metrics": ["ga:sessions", "ga:pageviews", "ga:users", "ga:pageviewsPerSession", "ga:avgSessionDuration", "ga:exits"],
         "start-date": "30daysAgo",
         "end-date": "yesterday",
         "sort": "-ga:sessions",
@@ -284,14 +283,7 @@
       "frequency": "daily",
       "query": {
         "dimensions": ["ga:exitPagePath"],
-        "metrics": [
-          "ga:sessions",
-          "ga:pageviews",
-          "ga:users",
-          "ga:pageviewsPerSession",
-          "ga:avgSessionDuration",
-          "ga:exits"
-        ],
+        "metrics": ["ga:sessions", "ga:pageviews", "ga:users", "ga:pageviewsPerSession", "ga:avgSessionDuration", "ga:exits"],
         "start-date": "30daysAgo",
         "end-date": "yesterday",
         "sort": "-ga:sessions",
@@ -310,7 +302,7 @@
         "metrics": ["ga:totalEvents"],
         "filters": [
           "ga:eventCategory=~ownload",
-          "ga:pagePath!~(usps.com).*/(?i)(zip|doc).*"
+          "ga:pagePath!~(usps.com).*\/(?i)(zip|doc).*"
         ],
         "start-date": "yesterday",
         "end-date": "yesterday",
@@ -404,14 +396,7 @@
       "frequency": "daily",
       "query": {
         "dimensions": ["ga:hostname"],
-        "metrics": [
-          "ga:sessions",
-          "ga:pageviews",
-          "ga:users",
-          "ga:pageviewsPerSession",
-          "ga:avgSessionDuration",
-          "ga:exits"
-        ],
+        "metrics": ["ga:sessions", "ga:pageviews", "ga:users", "ga:pageviewsPerSession", "ga:avgSessionDuration", "ga:exits"],
         "start-date": "30daysAgo",
         "end-date": "yesterday",
         "sort": "-ga:sessions",
@@ -427,19 +412,16 @@
       "name": "top-external-links-yesterday",
       "frequency": "hourly",
       "query": {
-        "dimensions": [
-          "ga:pageTitle",
-          "ga:eventLabel",
-          "ga:eventAction",
-          "ga:pagePath"
-        ],
+        "dimensions": ["ga:pageTitle", "ga:eventLabel", "ga:eventAction", "ga:pagePath"],
         "metrics": ["ga:totalEvents"],
-        "filters": ["ga:eventCategory=~utbound"],
+        "filters": [
+          "ga:eventCategory=~utbound"
+        ],
         "start-date": "yesterday",
         "end-date": "yesterday",
         "sort": "-ga:totalEvents",
         "max-results": "20"
-      },
+     },
       "meta": {
         "name": "All external links yesterday",
         "description": "Most popular external links clicked on all sites yesterday."
@@ -449,19 +431,16 @@
       "name": "top-external-links-7-days",
       "frequency": "hourly",
       "query": {
-        "dimensions": [
-          "ga:pageTitle",
-          "ga:eventLabel",
-          "ga:eventAction",
-          "ga:pagePath"
-        ],
+        "dimensions": ["ga:pageTitle", "ga:eventLabel", "ga:eventAction", "ga:pagePath"],
         "metrics": ["ga:totalEvents"],
-        "filters": ["ga:eventCategory=~utbound"],
+        "filters": [
+          "ga:eventCategory=~utbound"
+        ],
         "start-date": "7daysAgo",
         "end-date": "yesterday",
         "sort": "-ga:totalEvents",
         "max-results": "20"
-      },
+     },
       "meta": {
         "name": "All external links over the last week",
         "description": "Most popular external links clicked on all sites in the last week."
@@ -471,19 +450,16 @@
       "name": "top-external-links-30-days",
       "frequency": "daily",
       "query": {
-        "dimensions": [
-          "ga:pageTitle",
-          "ga:eventLabel",
-          "ga:eventAction",
-          "ga:pagePath"
-        ],
+        "dimensions": ["ga:pageTitle", "ga:eventLabel", "ga:eventAction", "ga:pagePath"],
         "metrics": ["ga:totalEvents"],
-        "filters": ["ga:eventCategory=~utbound"],
+        "filters": [
+          "ga:eventCategory=~utbound"
+        ],
         "start-date": "30daysAgo",
         "end-date": "yesterday",
         "sort": "-ga:totalEvents",
         "max-results": "20"
-      },
+     },
       "meta": {
         "name": "All external links in the last month",
         "description": "Most popular external links clicked on all sites in the last month."
@@ -520,98 +496,7 @@
         "name": "Top Pages (30 Days)",
         "description": "Last month's top 20 pages, measured by visits."
       }
-    },
-    {
-      "name": "users",
-      "frequency": "daily",
-      "slim": true,
-      "query": {
-        "dimensions": ["ga:date"],
-        "metrics": ["ga:sessions"],
-        "start-date": "90daysAgo",
-        "end-date": "yesterday",
-        "sort": "ga:date"
-      },
-      "meta": {
-        "name": "Visitors",
-        "description": "90 days of visits for all sites."
-      }
-    },
-    {
-      "name": "last-48-hours",
-      "frequency": "realtime",
-      "query": {
-        "dimensions": ["ga:date", "ga:hour"],
-        "metrics": ["ga:sessions"],
-        "start-date": "yesterday",
-        "end-date": "today"
-      },
-      "meta": {
-        "name": "Today",
-        "description": "Today's visits for all sites."
-      }
-    },
-    {
-      "name": "top-domains-7-days",
-      "frequency": "daily",
-      "query": {
-        "dimensions": ["ga:hostname"],
-        "metrics": ["ga:sessions"],
-        "start-date": "7daysAgo",
-        "end-date": "yesterday",
-        "sort": "-ga:sessions",
-        "max-results": "20"
-      },
-      "meta": {
-        "name": "Top Domains (7 Days)",
-        "description": "Last week's top 20 domains, measured by visits, for all sites."
-      }
-    },
-    {
-      "name": "top-domains-30-days",
-      "frequency": "daily",
-      "query": {
-        "dimensions": ["ga:hostname"],
-        "metrics": [
-          "ga:sessions",
-          "ga:users",
-          "ga:pageviews",
-          "ga:pageviewsPerSession",
-          "ga:avgSessionDuration",
-          "ga:exits"
-        ],
-        "start-date": "30daysAgo",
-        "end-date": "yesterday",
-        "sort": "-ga:sessions",
-        "max-results": "20"
-      },
-      "meta": {
-        "name": "Top Domains (30 Days)",
-        "description": "Last 30 days' top 20 domains, measured by visits, for all sites."
-      }
-    },
-    {
-      "name": "top-landing-pages-30-days",
-      "frequency": "daily",
-      "query": {
-        "dimensions": ["ga:landingPagePath"],
-        "metrics": [
-          "ga:sessions",
-          "ga:pageviews",
-          "ga:users",
-          "ga:pageviewsPerSession",
-          "ga:avgSessionDuration",
-          "ga:exits"
-        ],
-        "start-date": "30daysAgo",
-        "end-date": "yesterday",
-        "sort": "-ga:sessions",
-        "max-results": "20"
-      },
-      "meta": {
-        "name": "Top Landing Pages (30 Days)",
-        "description": "Last 30 days' Landing Pages, measured by visits, for all sites."
-      }
     }
+
   ]
 }

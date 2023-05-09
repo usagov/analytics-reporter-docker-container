@@ -1,7 +1,7 @@
 FROM node:18-alpine
 USER root
 COPY . .
-RUN chmod +x /createreports.sh
+RUN chmod +x /testscript.sh
 RUN apk add jq
 RUN apk add bash
-CMD ["./createreports.sh"]
+CMD ["./testscript.sh"]

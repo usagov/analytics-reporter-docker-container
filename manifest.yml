@@ -1,11 +1,11 @@
 ---
 applications:
-  - name: isabelj/nrforcloudgov
+  - name: isabelj/usagov_analytics_reporter
     instances: 1
     no-route: true
     health-check-type: process
     docker:
-      image: isabelj/nrforcloudgov
+      image: isabelj/usagov_analytics_reporter
       username: isabelj
     services:
-    - name: cupsTest
+      - name: analyticsReporterServices
