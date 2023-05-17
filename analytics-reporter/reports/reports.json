@@ -496,7 +496,98 @@
         "name": "Top Pages (30 Days)",
         "description": "Last month's top 20 pages, measured by visits."
       }
+    },
+    {
+      "name": "last-48-hours",
+      "frequency": "realtime",
+      "query": {
+        "dimensions": ["ga:date", "ga:hour"],
+        "metrics": ["ga:sessions"],
+        "start-date": "yesterday",
+        "end-date": "today"
+      },
+      "meta": {
+        "name": "Today",
+        "description": "Today's visits for all sites."
+      }
+    },
+    {
+      "name": "users",
+      "frequency": "daily",
+      "slim": true,
+      "query": {
+        "dimensions": ["ga:date"],
+        "metrics": ["ga:sessions"],
+        "start-date": "90daysAgo",
+        "end-date": "yesterday",
+        "sort": "ga:date"
+      },
+      "meta": {
+        "name": "Visitors",
+        "description": "90 days of visits for all sites."
+      }
+    },
+    {
+      "name": "top-domains-7-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:hostname"],
+        "metrics": ["ga:sessions"],
+        "start-date": "7daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:sessions",
+        "max-results": "20"
+      },
+      "meta": {
+        "name": "Top Domains (7 Days)",
+        "description": "Last week's top 20 domains, measured by visits, for all sites."
+      }
+    },
+    {
+      "name": "top-domains-30-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:hostname"],
+        "metrics": [
+          "ga:sessions",
+          "ga:users",
+          "ga:pageviews",
+          "ga:pageviewsPerSession",
+          "ga:avgSessionDuration",
+          "ga:exits"
+        ],
+        "start-date": "30daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:sessions",
+        "max-results": "20"
+      },
+      "meta": {
+        "name": "Top Domains (30 Days)",
+        "description": "Last 30 days' top 20 domains, measured by visits, for all sites."
+      }
+    },
+    {
+      "name": "top-landing-pages-30-days",
+      "frequency": "daily",
+      "query": {
+        "dimensions": ["ga:landingPagePath"],
+        "metrics": [
+          "ga:sessions",
+          "ga:pageviews",
+          "ga:users",
+          "ga:pageviewsPerSession",
+          "ga:avgSessionDuration",
+          "ga:exits"
+        ],
+        "start-date": "30daysAgo",
+        "end-date": "yesterday",
+        "sort": "-ga:sessions",
+        "max-results": "20"
+      },
+      "meta": {
+        "name": "Top Landing Pages (30 Days)",
+        "description": "Last 30 days' Landing Pages, measured by visits, for all sites."
+      }
     }
-
   ]
 }

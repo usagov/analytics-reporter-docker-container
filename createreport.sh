@@ -1,5 +1,5 @@
 #!/bin/bash
-echo starting container testscript.sh
+echo starting container to create reports
 cd analytics-reporter
 
 npm install -g analytics-reporter
